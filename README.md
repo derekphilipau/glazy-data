@@ -1,11 +1,17 @@
 # glazy-data
 Public data from the Glazy database
 
+# Usage:
+
+Please see [Pieter Mostert's Glazy Data Analysis project](https://github.com/PieterMostert/glazy-data-analysis) to understand some of the challenges with using this data.
+
+In particular, there are a number of duplicate recipes and similar recipes with only slight variations.
+
 # Data Files:
 
  * "all" - Contains composites (recipes- gazes and clay bodies) as well as primitive materials (e.g. Whiting, Silica)
- * "composites"  - Composites are any recipe (made up of multiple materials)
- * "glazes" - Contains only Glazes
+ * "composites"  - Composites are any recipe (a material made up of multiple materials)
+ * "glazes" - Contains only Glazes (a subset of Composites)
 
 ## Field definitions:
 
