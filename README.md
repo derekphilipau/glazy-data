@@ -1,6 +1,16 @@
 # glazy-data
 Public data from the Glazy database
 
+## About
+
+The Glazy database of ceramic recipes was originally seeded with data from [Linda Arbuckle's](http://lindaarbuckle.com)  [GlazeChem database](http://lindaarbuckle.com/arbuckle_handouts.html), John Sankey's [glaze database](http://www.johnsankey.ca/glazedata.html) (which is based on the extensive work by [Alisa Clausen](https://glazy.org/u/alisaclausen)), and [Louis Katz's](http://www.louiskatz.net) [Hyperglaze database](http://falcon.tamucc.edu/~lkatz/allglazes.txt).
+
+This repository intends to continue the tradition of making recipes publicly available.  This archived data only includes publicly shared recipes and materials.  It does not include any private data.
+
+## Copyright & License
+
+Note that although recipes themselves are not copyrightable, other Glazy user data, including descriptions, images, and other metadata, is copyrightable.  All publicly shared data on Glazy is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).  This repository is also licensed under [CC BY-NC-SA 4.0.](./LICENSE.md)
+
 ## Usage
 
 Please see [Pieter Mostert's Glazy Data Analysis project](https://github.com/PieterMostert/glazy-data-analysis) to understand some of the challenges with using this data.
@@ -8,6 +18,10 @@ Please see [Pieter Mostert's Glazy Data Analysis project](https://github.com/Pie
 In particular, there are a number of duplicate recipes and similar recipes with only slight variations.
 
 ## Data Files
+
+### legacy-data
+
+This directory contains the original data used to seed the Glazy database.
 
 ### glazy-[DATE].yaml.gz
 
