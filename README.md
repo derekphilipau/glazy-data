@@ -1,19 +1,27 @@
 # glazy-data
 Public data from the Glazy database
 
-# Usage:
+## Usage
 
 Please see [Pieter Mostert's Glazy Data Analysis project](https://github.com/PieterMostert/glazy-data-analysis) to understand some of the challenges with using this data.
 
 In particular, there are a number of duplicate recipes and similar recipes with only slight variations.
 
-# Data Files:
+## Data Files
+
+### glazy-[DATE].yaml.gz
+
+Compressed, human-readable YAML file that contains the all publicly archived materials and recipes in the Glazy database.
+
+### glazy-data-[TYPE]-[DATE].csv
+
+Legacy CSV files that contain material & recipe metadata and analyses.
 
  * "all" - Contains composites (recipes- gazes and clay bodies) as well as primitive materials (e.g. Whiting, Silica)
  * "composites"  - Composites are any recipe (a material made up of multiple materials)
  * "glazes" - Contains only Glazes (a subset of Composites)
 
-## Field definitions:
+#### CSV Field definitions:
 
  * id: Material/Recipe ID in Glazy
  * name: Name of material
@@ -51,7 +59,7 @@ In particular, there are a number of duplicate recipes and similar recipes with 
  * R2O_umf, RO_umf: Totals for R2O and RO values in UMF
  * loi: Loss on Ignition
  
- ANALYSES:
+#### CSV Analysis Field Definitions:
 
 * PERCENT ANALYSIS: denoted by XXXX_percent fields, e.g. SiO2_percent
 * UMF ANALYSIS: denoted by XXXX_umf fields, e.g. SiO2_umf
