@@ -25,45 +25,55 @@ This directory contains the original data used to seed the Glazy database.
 
 ### YAML
 
-#### glazy-[DATE].yaml.gz
+#### glazy_YYYYMMDD.yaml.gz
 
-Compressed, human-readable YAML file that contains the all publicly archived materials and recipes in the Glazy database.
+Compressed, human-readable YAML file that contains all publicly archived materials, analyses, and recipes in the Glazy database.
 
 The latest YAML export is listed in [`LATEST`](./LATEST), which contains the current filename as plain text.
 
 #### YAML format
 
-The YAML file is a YAML objects representing materials, analyses, and recipes:
-* ID: The Glazy ID of the material or recipe
-* Parent ID: (Optional) Materials may have parent materials.  For example, the parent of Custer Feldspar is Potash Feldspar.
-* Name: The name of the material or recipe
-* Created By: The user who created the material or recipe.  Use ID to disambiguate users with the same name.
-* Date Created: The date created in YYYY-MM-DD format
-* Type: "Material", "Analysis", or "Recipe"
-* Subtype: Subtype, e.g. "Glaze - Iron - Celadon - Green"
-* Cone: The firing temperature in Orton cone numbers.  May be a range, e.g. "9 - 10"
-* Surface: Surface type, e.g. "Glossy"
-* Atmospheres: Array of atmospheres, e.g. [Reduction, Oxidation]
-* Description: Description of the material or recipe
-* Ingredients: Array of ingredients.  Each ingredient has an ID, Name, and Percentage.  If the ingredient is an additional ingredient, it will have an "Additional" field set to true.  The ID is the Glazy ID of the ingredient.
-* Percent Analysis: Percent analysis of the material or recipe.  Each analysis has an oxide key (e.g. SiO2) and a value (e.g. 58.3003)
+The YAML file is a top-level list of objects representing materials, analyses, and recipes. Field names are intended to be human-readable and may contain spaces. Consumers should ignore unknown fields and treat most descriptive fields as optional.
+
+Common fields:
+
+* ID: Integer Glazy ID of the material, analysis, or recipe.
+* Parent ID: Optional integer Glazy ID of the parent material. For example, the parent of Custer Feldspar is Potash Feldspar.
+* Name: Name of the material, analysis, or recipe.
+* Other Names: Optional alternate names.
+* Created By: User who created the material, analysis, or recipe. Contains Name and integer ID. Use ID to disambiguate users with the same name.
+* Date Created: Date created, formatted as YYYY-MM-DD.
+* Date Modified: Date last modified, formatted as YYYY-MM-DD.
+* Type: Material, Analysis, or Recipe.
+* State: Testing, Production, or Discontinued.
+* Subtype: Subtype, e.g. Frit, Primitive, Glaze, or Glaze - Iron - Celadon - Green.
+* Cone: Optional firing temperature in Orton cone numbers. Treat this as a string because values may be single cones or ranges, e.g. "6" or "9 - 10".
+* Surface: Optional surface type, e.g. Glossy, Smooth Matte, or Semi-glossy.
+* Transparency: Optional transparency type, e.g. Opaque, Translucent, or Transparent.
+* Atmospheres: Optional list of firing atmospheres, e.g. [Reduction, Oxidation].
+* Country: Optional country associated with the material, analysis, or recipe.
+* Description: Optional description.
+* Ingredients: Optional list of ingredients for recipes. Each ingredient has an integer ID, Name, and numeric Percentage. If the ingredient is an additional ingredient, it has Additional set to true. When Additional is missing, treat it as false.
+* Percent Analysis: Optional oxide percent analysis. Each key is an oxide, e.g. SiO2, Al2O3, or LOI, and each value is numeric.
 
 (UMF was not included, as there are differing opinions on how UMF should be unified.)
 
 The following is an example of a simple material:
-  
-```
+
+```yaml
 -
   ID: 15131
   Parent ID: 15371
-  Name: "Custer Feldspar"
+  Name: 'Custer Feldspar'
   Created By:
-    Name: "Glazy Admin"
+    Name: 'Glazy Admin'
     ID: 1
-  Date Created: 2015-07-16
-  Type: Material
-  Subtype: Feldspar
-  Description: "Updated December 30, 2016. Analyses for recipes in Glazy using this material have automatically been updated..."
+  Date Created: '2015-07-16'
+  Date Modified: '2023-11-29'
+  Type: 'Material'
+  State: 'Production'
+  Subtype: 'Feldspar'
+  Description: 'Updated December 30, 2016. Analyses for recipes in Glazy using this material have automatically been updated...'
   Percent Analysis:
     SiO2: 68.5
     Al2O3: 17
@@ -76,40 +86,42 @@ The following is an example of a simple material:
 
 The following is an example of a recipe:
 
-```
+```yaml
 -
   ID: 240
-  Name: "Celadon Leach 4321"
+  Name: 'Celadon Leach 4321'
   Created By:
-    Name: "Glazy Admin"
+    Name: 'Glazy Admin'
     ID: 1
-  Date Created: 1997-08-07
-  Type: Recipe
-  Subtype: Glaze - Iron - Celadon - Green
-  Cone: 10
-  Surface: Glossy
-  Atmospheres: [Reduction]
-  Description: "Glaze Type: Celadon The glaze that is as old as dirt. it is published in the leech book as old. Use 4% iron + or - depending on color / green to blue if you decorate..."
+  Date Created: '1997-08-07'
+  Date Modified: '2015-07-31'
+  Type: 'Recipe'
+  State: 'Production'
+  Subtype: 'Glaze - Iron - Celadon - Green'
+  Cone: '10'
+  Surface: 'Glossy'
+  Atmospheres: ['Reduction']
+  Description: 'Glaze Type: Celadon The glaze that is as old as dirt. it is published in the leech book as old. Use 4% iron + or - depending on color / green to blue if you decorate...'
   Ingredients:
     -
       ID: 15142
-      Name: "Feldspar"
+      Name: 'Feldspar'
       Percentage: 40
     -
       ID: 15400
-      Name: "Silica"
+      Name: 'Silica'
       Percentage: 30
     -
       ID: 15457
-      Name: "Whiting"
+      Name: 'Whiting'
       Percentage: 20
     -
       ID: 15288
-      Name: "Kaolin"
+      Name: 'Kaolin'
       Percentage: 10
     -
       ID: 15387
-      Name: "Red Iron Oxide"
+      Name: 'Red Iron Oxide'
       Percentage: 4
       Additional: true
   Percent Analysis:
