@@ -29,6 +29,8 @@ This directory contains the original data used to seed the Glazy database.
 
 Compressed, human-readable YAML file that contains the all publicly archived materials and recipes in the Glazy database.
 
+The latest YAML export is listed in [`LATEST`](./LATEST), which contains the current filename as plain text.
+
 #### YAML format
 
 The YAML file is a YAML objects representing materials, analyses, and recipes:
